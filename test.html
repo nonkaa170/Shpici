@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Собаки породы шпиц</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px 30px;
+      background-image: url('https://cdn.pixabay.com/photo/2022/01/21/11/37/pandas-6954571_640.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #333;
+      transition: background-color 0.6s ease, color 0.6s ease, background-image 0.6s ease;
+    }
+    header {
+      background-color: #ffcc99;
+      padding: 20px;
+      text-align: center;
+      opacity: 0.95;
+    }
+    header h1 {
+      margin: 0;
+      color: #663300;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #ffb366;
+      margin: 0;
+      opacity: 0.95;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #663300;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      background-color: rgba(255, 248, 240, 0.92);
+      border-radius: 10px;
+      transition: background-color 0.6s ease, color 0.6s ease;
+    }
+    h2 {
+      color: #cc6600;
+    }
+    h3 {
+      margin-top: 30px;
+      color: #b35000;
+      font-size: 1.4em;
+    }
+    h4 {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #cc6600;
+    }
+    p, li {
+      color: #333;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    footer {
+      background-color: #ffcc99;
+      text-align: center;
+      padding: 10px;
+      color: #663300;
+      opacity: 0.95;
+      margin-top: 20px;
+      border-radius: 5px;
+      transition: background-color 0.6s ease, color 0.6s ease;
+    }
+
+    /* Кнопка переключения темы */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 70px;
+      z-index: 1001;
+    }
+    .theme-toggle button {
+      background-color: #ffb366;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      position: relative;
+      color: #663300;
+    }
+    .theme-toggle button:hover {
+      background-color: #ffa64d;
+    }
+    .theme-toggle button::after {
+      content: attr(title);
+      position: absolute;
+      top: 50%;
+      right: 110%;
+      background-color: #444;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .theme-toggle button:hover::after {
+      opacity: 1;
+    }
+
+    /* Тёмная тема */
+    body.dark-mode {
+      background-color: #1e1e1e;
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/forest-1867449_640.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #eee;
+    }
+    body.dark-mode header,
+    body.dark-mode nav ul,
+    body.dark-mode footer {
+      background-color: #333 !important;
+      color: #eee !important;
+    }
+    body.dark-mode .container {
+      background-color: rgba(40, 40, 40, 0.95);
+      color: #ddd;
+    }
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4 {
+      color: #ffa64d;
+    }
+    body.dark-mode p,
+    body.dark-mode li,
+    body.dark-mode a {
+      color: #ddd;
+    }
+    body.dark-mode .theme-toggle button {
+      background-color: #444;
+      color: #ffa64d;
+    }
+    body.dark-mode .theme-toggle button:hover {
+      background-color: #666;
+    }
+
+    /* Плавные переходы */
+    body, .container, header, nav, footer, .theme-toggle button {
+      transition: background-color 0.6s ease, color 0.6s ease, background-image 0.6s ease;
+    }
+
+    /* Кнопка "Наверх" */
+    #toTopBtn {
+      display: none; /* Скрыта по умолчанию */
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1002;
+      border: none;
+      outline: none;
+      background-color: #ffb366;
+      color: #663300;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+    #toTopBtn:hover {
+      background-color: #ffa64d;
+    }
+
+    /* Новый раздел Интересные факты */
+    #fakt {
+      margin-top: 40px;
+    }
+    .facts-container {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .fact-box {
+      background-color: #ffefdb;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 30%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: #663300;
+      min-width: 250px;
+    }
+
+    body.dark-mode .fact-box {
+      background-color: rgba(255, 166, 77, 0.2);
+      color: #ffcc80;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="home">
+    <h1>Добро пожаловать в мир шпицев!</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">О породе</a></li>
+      <li><a href="#care">Уход</a></li>
+      <li><a href="#fakt">Интересные факты</a></li>
+    </ul>
+  </nav>
+
+  <!-- Переключатель темы -->
+  <div class="theme-toggle">
+    <button id="toggleTheme" title="Переключить тему">🌙</button>
+  </div>
+
+  <!-- Кнопка "Наверх" -->
+  <button id="toTopBtn" title="Наверх">⬆️</button>
+
+  <div class="container">
+    <section id="about">
+      <h2>О породе шпиц</h2>
+      <p>Шпицы — это группа декоративных собак с густой шерстью и пушистым хвостом, завёрнутым на спину. Они известны своей дружелюбностью, умом и компактными размерами.</p>
+      <p>Семейство шпицев обычно ассоциируется у всех с миниатюрными померанскими шпицами. Однако мало кто знает, что на самом деле семейство этих четвероногих весьма велико и некоторые его виды могут достигать в холке целых 50 см и более. Что касается пропорций всех собачек породы шпиц, то длина туловища практически равна высоте в холке, поэтому они немного напоминают форму квадрата, что делает их ещё более забавными. Если говорить об окрасе шерсти, то преобладают обычно белый, рыжий, коричневый и серый цвета, иногда разбавленные более светлыми или тёмными пятнами. Реже встречаются пушистики с оранжевым, чёрным и соболиным цветами, а самыми редкими окрасами считаются кремовый и пепельно- чёрный.</p>
+    </section>
+
+    <section>
+      <h2>Преимущества шпицев</h2>
+      <ul>
+        <li>Компактный размер — удобно содержать даже в квартире</li>
+        <li>Очень преданы хозяину</li>
+        <li>Отличные компаньоны</li>
+        <li>Хорошо поддаются дрессировке</li>
+      </ul>
+    </section>
+
+    <section id="care">
+      <h2>Уход за шпицем</h2>
+
+      <h3>🧼 Уход за шерстью</h3>
+      <img src="https://i.pinimg.com/originals/42/72/22/427222d78b3828799137e276585f32e7.gif" alt="Шпиц с красивой шерстью" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px;">
+
+      <h4>🪮 Расчесывание</h4>
+      <p>Регулярное расчесывание <strong>(2–3 раза в неделю)</strong> помогает предотвратить образование колтунов, особенно в местах с более мягкой шерстью: подмышки, пах, за ушами.</p>
+
+      <h4>🛁 Купание</h4>
+      <p>Купать шпица следует нечасто — раз в 4–6 недель. Используйте специальный шампунь для длинношерстных собак и кондиционер. Во время линьки купание лучше ограничить.</p>
+
+      <h4>💨 Сушка</h4>
+      <img src="https://99px.ru/sstorage/86/2015/10/image_862110151348244714072.gif" alt="Сушка собаки феном" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <p>После купания важно тщательно просушить шерсть <em>феном с прохладным воздухом</em>, используя расчёску с редкими зубьями.</p>
+
+      <h4>✂️ Груминг</h4>
+      <img src="https://cs11.pikabu.ru/post_img/2019/01/31/3/1548902512164336535.gif" alt="Груминг шпица" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <p>Для поддержания формы шерсти и удаления отмерших волос можно применять тримминг.</p>
+
+      <h3>🩺 Другие процедуры по уходу</h3>
+
+      <h4>🦷 Чистка зубов</h4>
+      <p>Регулярная чистка зубов помогает предотвратить образование налета и зубного камня.</p>
+
+      <h4>🐾 Уход за когтями</h4>
+      <p>Когти подстригаются примерно <strong>раз в 2–3 недели</strong> по мере отрастания.</p>
+
+      <h4>👂 Уход за ушами</h4>
+      <p>Уши нужно очищать <strong>2–3 раза в неделю</strong> ватным диском, смоченным в специальном лосьоне.</p>
+
+      <h4>👁️ Уход за глазами</h4>
+      <p>Глаза протирают раз в неделю ватным диском, смоченным в кипячёной воде или отваре ромашки.</p>
+    </section>
+
+    <section>
+      <h2>Галерея шпицев</h2>
+      <div class="gallery">
+        <figure>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqvdFvGmaATYKo9pBL9fNtyuKEfIWDO140jQ&s" alt="Шпиц на прогулке" />
+        </figure>
+        <figure>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU4rHmDH9hKYVYkFKCuPfdmfwPh6y-O5MYug&s" alt="Маленький шпиц" />
+        </figure>
+        <figure>
+          <img src="https://cdn.fotostrana.ru/thumb/570/4299/3991261.jpeg" alt="Белый шпиц" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Новый раздел Интересные факты -->
+    <section id="fakt">
+      <h2>Интересные факты</h2>
+      <div class="facts-container">
+        <div class="fact-box">
+          <h3>История</h3>
+          <p>В свое время английская королева Виктория очень полюбила померанских шпицев, что способствовало росту их популярности.</p>
+        </div>
+        <div class="fact-box">
+          <h3>Популярность</h3>
+          <p>Шпицы, особенно померанские, очень популярны во всем мире, в том числе и в Украине, благодаря своей милой внешности и живому характеру.</p>
+        </div>
+        <div class="fact-box">
+          <h3>Характер</h3>
+          <p>Шпицы — умные и активные собаки, которые легко обучаются и отлично подходят для семей с детьми.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    &copy; 2024 Все права защищены.
+  </footer>
+
+  <script>
+    // Кнопка "Наверх"
+    const toTopBtn = document.getElementById('toTopBtn');
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        toTopBtn.style.display = "block";
+      } else {
+        toTopBtn.style.display = "none";
+      }
+    };
+    toTopBtn.onclick = function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // Переключатель темы
+    const toggleThemeBtn = document.getElementById('toggleTheme');
+    toggleThemeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')){
+        toggleThemeBtn.textContent = '☀️';
+        toggleThemeBtn.title = 'Светлая тема';
+      } else {
+        toggleThemeBtn.textContent = '🌙';
+        toggleThemeBtn.title = 'Тёмная тема';
+      }
+    });
+  </script>
+</body>
+</html>
