@@ -1,375 +1,662 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Собаки породы шпиц</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шпіци - Незрівнянні Пухнастики</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #FF9A3D;
+      --primary-dark: #E07D2C;
+      --secondary: #5D3A00;
+      --light: #FFF8F0;
+      --dark: #1A1A1A;
+      --text: #333333;
+      --text-light: #F0F0F0;
+      --bg-light: rgba(255, 248, 240, 0.96);
+      --bg-dark: rgba(30, 30, 30, 0.96);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px 30px;
-      background-image: url('https://cdn.pixabay.com/photo/2022/01/21/11/37/pandas-6954571_640.jpg');
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      background-image: url('https://images.unsplash.com/photo-1583511655826-05700442b31b?q=80&w=2070&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      color: #333;
-      transition: background-color 0.6s ease, color 0.6s ease, background-image 0.6s ease;
+      color: var(--text);
+      line-height: 1.7;
+      transition: var(--transition);
     }
+
+    /* Header */
     header {
-      background-color: #ffcc99;
-      padding: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 2rem 1rem;
       text-align: center;
-      opacity: 0.95;
+      border-radius: 0 0 var(--radius) var(--radius);
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      animation: pulse 15s infinite linear;
+    }
+
+    @keyframes pulse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     header h1 {
       margin: 0;
-      color: #663300;
+      color: white;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      position: relative;
+      font-weight: 700;
     }
+
+    header p {
+      color: rgba(255,255,255,0.9);
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 154, 61, 0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: var(--radius);
+      margin: 0 auto 2rem;
+      max-width: 1200px;
+    }
+
     nav ul {
       list-style: none;
-      padding: 0;
       display: flex;
       justify-content: center;
-      background-color: #ffb366;
+      flex-wrap: wrap;
+      padding: 1rem;
       margin: 0;
-      opacity: 0.95;
     }
+
     nav ul li {
-      margin: 0 15px;
+      margin: 0 1rem;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #663300;
-      font-weight: bold;
-    }
-    .container {
-      padding: 20px;
-      background-color: rgba(255, 248, 240, 0.92);
-      border-radius: 10px;
-      transition: background-color 0.6s ease, color 0.6s ease;
-    }
-    h2 {
-      color: #cc6600;
-    }
-    h3 {
-      margin-top: 30px;
-      color: #b35000;
-      font-size: 1.4em;
-    }
-    h4 {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #cc6600;
-    }
-    p, li {
-      color: #333;
-      line-height: 1.6;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    footer {
-      background-color: #ffcc99;
-      text-align: center;
-      padding: 10px;
-      color: #663300;
-      opacity: 0.95;
-      margin-top: 20px;
-      border-radius: 5px;
-      transition: background-color 0.6s ease, color 0.6s ease;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      display: inline-block;
+      position: relative;
     }
 
-    /* Кнопка переключения темы */
+    nav ul li a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 2rem;
+      background-color: var(--bg-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 500;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* Lists */
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    li::before {
+      content: '🐾';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Images */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: block;
+      margin: 1rem auto;
+    }
+
+    img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    /* Facts section */
+    .facts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .fact-box {
+      background: linear-gradient(135deg, rgba(255,154,61,0.1), rgba(255,154,61,0.05));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(255,154,61,0.2);
+    }
+
+    .fact-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      background: linear-gradient(135deg, rgba(255,154,61,0.15), rgba(255,154,61,0.1));
+    }
+
+    .fact-box h3 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      text-align: center;
+      padding: 2rem;
+      color: white;
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin-top: 3rem;
+      box-shadow: var(--shadow);
+    }
+
+    footer p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+
+    /* Theme toggle */
     .theme-toggle {
       position: fixed;
-      top: 20px;
-      right: 70px;
+      top: 1.5rem;
+      right: 1.5rem;
       z-index: 1001;
     }
+
     .theme-toggle button {
-      background-color: #ffb366;
+      background-color: var(--primary);
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s ease;
-      position: relative;
-      color: #663300;
-    }
-    .theme-toggle button:hover {
-      background-color: #ffa64d;
-    }
-    .theme-toggle button::after {
-      content: attr(title);
-      position: absolute;
-      top: 50%;
-      right: 110%;
-      background-color: #444;
-      color: #fff;
-      padding: 4px 8px;
-      font-size: 12px;
-      border-radius: 4px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-50%);
-      transition: opacity 0.3s ease;
-      white-space: nowrap;
-      z-index: 10;
-    }
-    .theme-toggle button:hover::after {
-      opacity: 1;
-    }
-
-    /* Тёмная тема */
-    body.dark-mode {
-      background-color: #1e1e1e;
-      background-image: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/forest-1867449_640.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #eee;
-    }
-    body.dark-mode header,
-    body.dark-mode nav ul,
-    body.dark-mode footer {
-      background-color: #333 !important;
-      color: #eee !important;
-    }
-    body.dark-mode .container {
-      background-color: rgba(40, 40, 40, 0.95);
-      color: #ddd;
-    }
-    body.dark-mode h2,
-    body.dark-mode h3,
-    body.dark-mode h4 {
-      color: #ffa64d;
-    }
-    body.dark-mode p,
-    body.dark-mode li,
-    body.dark-mode a {
-      color: #ddd;
-    }
-    body.dark-mode .theme-toggle button {
-      background-color: #444;
-      color: #ffa64d;
-    }
-    body.dark-mode .theme-toggle button:hover {
-      background-color: #666;
-    }
-
-    /* Плавные переходы */
-    body, .container, header, nav, footer, .theme-toggle button {
-      transition: background-color 0.6s ease, color 0.6s ease, background-image 0.6s ease;
-    }
-
-    /* Кнопка "Наверх" */
-    #toTopBtn {
-      display: none; /* Скрыта по умолчанию */
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1002;
-      border: none;
-      outline: none;
-      background-color: #ffb366;
-      color: #663300;
-      cursor: pointer;
-      padding: 12px 16px;
-      border-radius: 50%;
-      font-size: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-    }
-    #toTopBtn:hover {
-      background-color: #ffa64d;
-    }
-
-    /* Новый раздел Интересные факты */
-    #fakt {
-      margin-top: 40px;
-    }
-    .facts-container {
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      color: white;
       display: flex;
-      gap: 20px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      align-items: center;
+      justify-content: center;
     }
-    .fact-box {
-      background-color: #ffefdb;
-      border-radius: 10px;
-      padding: 20px;
-      flex: 1 1 30%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      color: #663300;
-      min-width: 250px;
+
+    .theme-toggle button:hover {
+      background-color: var(--primary-dark);
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    /* Back to top button */
+    #toTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #toTopBtn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Decorations */
+    .decorative {
+      font-family: 'Marck Script', cursive;
+      color: var(--primary);
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-image: url('https://cdn.27.ua/sc--media--prod/default/62/06/e1/6206e1af-bd1e-4147-8131-4bb671959f9b.webp');
+      color: var(--text-light);
+      --text: var(--text-light);
+    }
+
+
+    body.dark-mode .container {
+      background-color: var(--bg-dark);
     }
 
     body.dark-mode .fact-box {
-      background-color: rgba(255, 166, 77, 0.2);
-      color: #ffcc80;
-      box-shadow: none;
+      background: linear-gradient(135deg, rgba(255,154,61,0.1), rgba(255,154,61,0.05));
+      border-color: rgba(255,154,61,0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      .facts-container {
+        grid-template-columns: 1fr;
+      }
+
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .theme-toggle button,
+      #toTopBtn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <header id="home">
-    <h1>Добро пожаловать в мир шпицев!</h1>
+    <h1>Чарівний світ <span class="decorative">шпіців</span></h1>
+    <p>Відкрийте для себе цих неймовірно пухнастих та відданих друзів</p>
   </header>
 
   <nav>
     <ul>
-      <li><a href="#about">О породе</a></li>
-      <li><a href="#care">Уход</a></li>
-      <li><a href="#fakt">Интересные факты</a></li>
+      <li><a href="#about">Про породу</a></li>
+      <li><a href="#care">Догляд</a></li>
+      <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#facts">Цікаві факти</a></li>
     </ul>
   </nav>
 
-  <!-- Переключатель темы -->
   <div class="theme-toggle">
-    <button id="toggleTheme" title="Переключить тему">🌙</button>
+    <button id="toggleTheme" title="Змінити тему">🌙</button>
   </div>
 
-  <!-- Кнопка "Наверх" -->
-  <button id="toTopBtn" title="Наверх">⬆️</button>
+  <button id="toTopBtn" title="Нагору">↑</button>
 
   <div class="container">
     <section id="about">
-      <h2>О породе шпиц</h2>
-      <p>Шпицы — это группа декоративных собак с густой шерстью и пушистым хвостом, завёрнутым на спину. Они известны своей дружелюбностью, умом и компактными размерами.</p>
-      <p>Семейство шпицев обычно ассоциируется у всех с миниатюрными померанскими шпицами. Однако мало кто знает, что на самом деле семейство этих четвероногих весьма велико и некоторые его виды могут достигать в холке целых 50 см и более. Что касается пропорций всех собачек породы шпиц, то длина туловища практически равна высоте в холке, поэтому они немного напоминают форму квадрата, что делает их ещё более забавными. Если говорить об окрасе шерсти, то преобладают обычно белый, рыжий, коричневый и серый цвета, иногда разбавленные более светлыми или тёмными пятнами. Реже встречаются пушистики с оранжевым, чёрным и соболиным цветами, а самыми редкими окрасами считаются кремовый и пепельно- чёрный.</p>
+      <h2>Про породу шпіц</h2>
+      <p>Шпіци — це група декоративних собак з густою шерстю та пухнастим хвостом, закрученим на спину. Вони відомі своєю дружелюбністю, кмітливістю та компактними розмірами.</p>
+      
+      <p>Сімейство шпіців зазвичай асоціюється з мініатюрними померанськими шпіцами. Однак мало хто знає, що насправді сімейство цих чотирилапих дуже велике, і деякі його види можуть досягати у холці цілих 50 см і більше.</p>
+      
+      <p>Що стосується пропорцій всіх собачок породи шпіц, то довжина тулуба практично дорівнює висоті в холці, тому вони трохи нагадують форму квадрата, що робить їх ще більш кумедними. Якщо говорити про колір шерсті, то зазвичай переважають білий, рудий, коричневий та сірий кольори, іноді розбавлені світлішими або темнішими плямами.</p>
     </section>
 
     <section>
-      <h2>Преимущества шпицев</h2>
+      <h2>Переваги шпіців</h2>
       <ul>
-        <li>Компактный размер — удобно содержать даже в квартире</li>
-        <li>Очень преданы хозяину</li>
-        <li>Отличные компаньоны</li>
-        <li>Хорошо поддаются дрессировке</li>
+        <li>Компактний розмір — зручно утримувати навіть у квартирі</li>
+        <li>Надзвичайно віддані господарю</li>
+        <li>Чудові компаньйони</li>
+        <li>Добре піддаються дресируванню</li>
+        <li>Мають гарне здоров'я та довгу тривалість життя</li>
+        <li>Ідеальні для сімей з дітьми</li>
       </ul>
+      
+      <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?q=80&w=2098&auto=format&fit=crop" alt="Шпіц грається">
     </section>
 
     <section id="care">
-      <h2>Уход за шпицем</h2>
+      <h2>Догляд за шпіцем</h2>
 
-      <h3>🧼 Уход за шерстью</h3>
-      <img src="https://i.pinimg.com/originals/42/72/22/427222d78b3828799137e276585f32e7.gif" alt="Шпиц с красивой шерстью" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px;">
+      <h3>🧼 Догляд за шерстю</h3>
+      <img src="https://i.pinimg.com/originals/42/72/22/427222d78b3828799137e276585f32e7.gif" alt="Шпіц з гарною шерстю">
 
-      <h4>🪮 Расчесывание</h4>
-      <p>Регулярное расчесывание <strong>(2–3 раза в неделю)</strong> помогает предотвратить образование колтунов, особенно в местах с более мягкой шерстью: подмышки, пах, за ушами.</p>
+      <h4>🪮 Розчісування</h4>
+      <p>Регулярне розчісування <strong>(2-3 рази на тиждень)</strong> допомагає запобігти утворенню колтунів, особливо в місцях з м'якшою шерстю: пахви, пах, за вухами.</p>
 
-      <h4>🛁 Купание</h4>
-      <p>Купать шпица следует нечасто — раз в 4–6 недель. Используйте специальный шампунь для длинношерстных собак и кондиционер. Во время линьки купание лучше ограничить.</p>
+      <h4>🛁 Купання</h4>
+      <p>Купати шпіца слід нечасто — раз на 4-6 тижнів. Використовуйте спеціальний шампунь для довгошерстих собак та кондиціонер. Під час линьки купання краще обмежити.</p>
 
-      <h4>💨 Сушка</h4>
-      <img src="https://99px.ru/sstorage/86/2015/10/image_862110151348244714072.gif" alt="Сушка собаки феном" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-      <p>После купания важно тщательно просушить шерсть <em>феном с прохладным воздухом</em>, используя расчёску с редкими зубьями.</p>
+      <h4>💨 Сушіння</h4>
+      <img src="https://99px.ru/sstorage/86/2015/10/image_862110151348244714072.gif" alt="Сушка собаки феном">
+      <p>Після купання важливо ретельно просушити шерсть <em>феном з прохолодним повітрям</em>, використовуючи розчіску з рідкими зубцями.</p>
 
-      <h4>✂️ Груминг</h4>
-      <img src="https://cs11.pikabu.ru/post_img/2019/01/31/3/1548902512164336535.gif" alt="Груминг шпица" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-      <p>Для поддержания формы шерсти и удаления отмерших волос можно применять тримминг.</p>
+      <h4>✂️ Грумінг</h4>
+      <img src="https://cs11.pikabu.ru/post_img/2019/01/31/3/1548902512164336535.gif" alt="Грумінг шпіца">
+      <p>Для підтримання форми шерсті та видалення відмерлих волосків можна застосовувати тримінг.</p>
 
-      <h3>🩺 Другие процедуры по уходу</h3>
+      <h3>🩺 Інші процедури догляду</h3>
 
-      <h4>🦷 Чистка зубов</h4>
-      <p>Регулярная чистка зубов помогает предотвратить образование налета и зубного камня.</p>
+      <h4>🦷 Чистка зубів</h4>
+      <p>Регулярна чистка зубів допомагає запобігти утворенню нальоту та зубного каменю.</p>
 
-      <h4>🐾 Уход за когтями</h4>
-      <p>Когти подстригаются примерно <strong>раз в 2–3 недели</strong> по мере отрастания.</p>
+      <h4>🐾 Догляд за пазурами</h4>
+      <p>Пазури підстригаються приблизно <strong>раз на 2-3 тижні</strong> по мірі відростання.</p>
 
-      <h4>👂 Уход за ушами</h4>
-      <p>Уши нужно очищать <strong>2–3 раза в неделю</strong> ватным диском, смоченным в специальном лосьоне.</p>
+      <h4>👂 Догляд за вухами</h4>
+      <p>Вуха потрібно очищати <strong>2-3 рази на тиждень</strong> ватним диском, змоченим у спеціальному лосьйоні.</p>
 
-      <h4>👁️ Уход за глазами</h4>
-      <p>Глаза протирают раз в неделю ватным диском, смоченным в кипячёной воде или отваре ромашки.</p>
+      <h4>👁️ Догляд за очима</h4>
+      <p>Очі протирають раз на тиждень ватним диском, змоченим у кип'яченій воді або відварі ромашки.</p>
     </section>
 
-    <section>
-      <h2>Галерея шпицев</h2>
+    <section id="gallery">
+      <h2>Галерея шпіців</h2>
       <div class="gallery">
-        <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqvdFvGmaATYKo9pBL9fNtyuKEfIWDO140jQ&s" alt="Шпиц на прогулке" />
-        </figure>
-        <figure>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU4rHmDH9hKYVYkFKCuPfdmfwPh6y-O5MYug&s" alt="Маленький шпиц" />
-        </figure>
-        <figure>
-          <img src="https://cdn.fotostrana.ru/thumb/570/4299/3991261.jpeg" alt="Белый шпиц" />
-        </figure>
+        <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?q=80&w=1935&auto=format&fit=crop" alt="Померанський шпіц">
+        <img src="https://images.unsplash.com/photo-1594149929911-78975a43d4f5?q=80&w=2070&auto=format&fit=crop" alt="Шпіц на прогулянці">
+        <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?q=80&w=2070&auto=format&fit=crop" alt="Білий шпіц">
+        <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?q=80&w=1974&auto=format&fit=crop" alt="Шпіц з м'ячем">
+        <img src="https://images.unsplash.com/photo-1594149929911-78975a43d4f5?q=80&w=2070&auto=format&fit=crop" alt="Шпіц посміхається">
+        <img src="https://images.unsplash.com/photo-1598890777035-a9a5d37a4241?q=80&w=1974&auto=format&fit=crop" alt="Шпіц у квітах">
       </div>
     </section>
 
-    <!-- Новый раздел Интересные факты -->
-    <section id="fakt">
-      <h2>Интересные факты</h2>
+    <section id="facts">
+      <h2>Цікаві факти про шпіців</h2>
       <div class="facts-container">
         <div class="fact-box">
-          <h3>История</h3>
-          <p>В свое время английская королева Виктория очень полюбила померанских шпицев, что способствовало росту их популярности.</p>
+          <h3>Історична довідка</h3>
+          <p>Шпіци є однією з найдавніших порід собак. Їхні предки жили ще в епоху неоліту. Сучасні шпіци походять від давніх північних собак, які супроводжували людину тисячоліттями.</p>
         </div>
         <div class="fact-box">
-          <h3>Популярность</h3>
-          <p>Шпицы, особенно померанские, очень популярны во всем мире, в том числе и в Украине, благодаря своей милой внешности и живому характеру.</p>
+          <h3>Королівські улюбленці</h3>
+          <p>У своїй час англійська королева Вікторія дуже полюбила померанських шпіців, що сприяло зростанню їхньої популярності. Вона заснувала власний розплідник і активно займалася розведенням цієї породи.</p>
         </div>
         <div class="fact-box">
-          <h3>Характер</h3>
-          <p>Шпицы — умные и активные собаки, которые легко обучаются и отлично подходят для семей с детьми.</p>
+          <h3>Розумні та кмітливі</h3>
+          <p>Шпіці посідають 23-тє місце за інтелектом серед порід собак. Вони відмінно піддаються дресируванню, можуть виконувати складні трюки і навіть виступати в цирку.</p>
+        </div>
+        <div class="fact-box">
+          <h3>Різноманіття розмірів</h3>
+          <p>Існує кілька різновидів шпіців: від маленьких померанських (1,5-3,5 кг) до великих німецьких (до 20 кг). Всі вони мають схожі риси, але відрізняються розмірами.</p>
+        </div>
+        <div class="fact-box">
+          <h3>Довголіття</h3>
+          <p>Шпіци відомі своєю довгою тривалістю життя. Померанські шпіці часто живуть 12-16 років, а деякі навіть перетинають 20-річний рубіж при правильному догляді.</p>
+        </div>
+        <div class="fact-box">
+          <h3>Голосні охоронці</h3>
+          <p>Незважаючи на малі розміри, шпіци - відмінні вартові. Вони завжди попередять про незнайомців гучним гавкотом, що робить їх чудовими сигналізаторами.</p>
         </div>
       </div>
     </section>
-
   </div>
 
   <footer>
-    &copy; 2024 Все права защищены.
+    <p>© 2025 Усі права захищено. Сайт про шпіців</p>
+    <p>Зроблено з любов'ю до чотирилапих</p>
   </footer>
 
   <script>
-    // Кнопка "Наверх"
-    const toTopBtn = document.getElementById('toTopBtn');
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        toTopBtn.style.display = "block";
-      } else {
-        toTopBtn.style.display = "none";
-      }
-    };
-    toTopBtn.onclick = function() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    };
-
-    // Переключатель темы
+    // Theme toggle
     const toggleThemeBtn = document.getElementById('toggleTheme');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+
+    // Check for saved theme preference
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleThemeBtn.textContent = '☀️';
+      toggleThemeBtn.title = 'Світла тема';
+    } else if (currentTheme === 'light') {
+      document.body.classList.remove('dark-mode');
+      toggleThemeBtn.textContent = '🌙';
+      toggleThemeBtn.title = 'Темна тема';
+    } else if (prefersDarkScheme.matches) {
+      document.body.classList.add('dark-mode');
+      toggleThemeBtn.textContent = '☀️';
+      toggleThemeBtn.title = 'Світла тема';
+    }
+
+    // Theme toggle button
     toggleThemeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      if(document.body.classList.contains('dark-mode')){
+      const isDark = document.body.classList.toggle('dark-mode');
+      
+      if (isDark) {
         toggleThemeBtn.textContent = '☀️';
-        toggleThemeBtn.title = 'Светлая тема';
+        toggleThemeBtn.title = 'Світла тема';
+        localStorage.setItem('theme', 'dark');
       } else {
         toggleThemeBtn.textContent = '🌙';
-        toggleThemeBtn.title = 'Тёмная тема';
+        toggleThemeBtn.title = 'Темна тема';
+        localStorage.setItem('theme', 'light');
       }
     });
+
+    // Back to top button
+    const toTopBtn = document.getElementById('toTopBtn');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        toTopBtn.style.display = 'flex';
+      } else {
+        toTopBtn.style.display = 'none';
+      }
+    });
+    
+    toTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Update URL without page reload
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          } else {
+            location.hash = targetId;
+          }
+        }
+      });
+    });
+
+    // Add animation to sections when they come into view
+    const animateOnScroll = () => {
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight * 0.75) {
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Set initial styles for animation
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Run once on load
+    window.addEventListener('load', animateOnScroll);
+    
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
   </script>
 </body>
 </html>
